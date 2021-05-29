@@ -1,0 +1,18 @@
+{
+	"ep8pv": {
+		"sounds":[
+			{
+				"name": "geniustech:music/ep8pv",
+				"stream": false
+			}
+		]
+	},
+	"infacted": {
+		"sounds":[
+			{
+				"name": "geniustech:music/infacted",
+				"stream": false
+			}
+		]
+	}
+}

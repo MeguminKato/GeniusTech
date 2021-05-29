@@ -1,0 +1,31 @@
+itemGroup.geniustech.creativeTab=Genius Tech
+
+tile.geniustech.fluid.bana.name=Fluid Mana
+tile.geniustech.blocktechmagic.heat_generator.name=Industrial EndoFlame
+tile.geniustech.blocktechmagic.mana_converter.name=Mana Exporter
+tile.geniustech.blocktechmagic.tnt_generator.name=Industrial Entropinnyum
+
+
+status.geniustech.blocktechmagic.mana_converter.active=Running
+status.geniustech.blocktechmagic.mana_converter.deactive=Sleeping
+
+fluid.bana=Fluid Mana
+
+info.geniustech.blocktechmagic.heat_generator=a little chemistry and...magic
+info.geniustech.blocktechmagic.tnt_generator=every one get out here
+info.geniustech.blocktechmagic.mana_converter=oh,i had a mistake
+
+item.geniustech.augment_tm.tm_speed.name=Overclock
+item.geniustech.augment_tm.tm_turbine.name=Stackboost
+
+
+info.geniustech.augment_tm.tm_speed.0=Industrial Powerflower£ºOverclock
+info.geniustech.augment_tm.tm_speed.b.0=reduce the processing time
+info.geniustech.augment_tm.tm_speed.c.0=and reduce output
+info.geniustech.augment_tm.tm_speed.a.0=[WIP]
+
+info.geniustech.augment_tm.tm_turbine.0=Industrial Powerflower£ºStackboost
+info.geniustech.augment_tm.tm_turbine.b.0=using more item for processing
+info.geniustech.augment_tm.tm_turbine.c.0=processing time increased
+info.geniustech.augment_tm.tm_turbine.a.0=[WIP]
+

@@ -1,0 +1,134 @@
+buildscript {
+    repositories {
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+def build_number = 'alpha'
+if (System.getenv('BUILD_NUMBER') != null)
+    build_number = System.getenv('BUILD_NUMBER')
+
+def username = "${mod_name}"
+if (project.hasProperty('dev_username'))
+    username = "${dev_username}"
+
+version = "${mc_version}-${mod_version}-${build_number}"
+group = package_group
+archivesBaseName = mod_name
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+repositories {
+    mavenLocal();
+    maven { url "http://dvs1.progwml6.com/files/maven" }
+    maven {	url "https://maven.tehnut.info" }
+    maven { url "http://chickenbones.net/maven" }
+    maven { url "https://maven.blamejared.com" }
+    maven {
+        name = "CoFH Maven"
+        url = "http://maven.covers1624.net"
+    }
+    maven{
+        url = "https://maven.teamacronymcoders.com"
+    }
+    maven {
+        url "http://maven.shadowfacts.net/"
+    }
+    maven {
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+    maven {
+        name = 'Curseforge Maven'
+        url = 'http://minecraft.curseforge.com/api/maven/'
+    }
+}
+
+dependencies {
+    compile 'baubles:Baubles:1.12:1.5.2'
+    compile "vazkii.botania:Botania:r1.10-363.148"
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${waila_version}_1.12.2"//Hwyla-1.8.26-B41_1.12.2.pom
+    deobfCompile "cofh:RedstoneFlux:1.12-2.+:deobf"
+	deobfCompile "cofh:CoFHCore:${mc_version}-+:deobf"
+    deobfCompile "cofh:CoFHWorld:${mc_version}-${cofh_world_version}:deobf"
+	deobfCompile "cofh:ThermalFoundation:${mc_version}-+:deobf"
+	deobfCompile "cofh:ThermalExpansion:${mc_version}-+:deobf"
+	deobfCompile "cofh:ThermalDynamics:${mc_version}-${td_version}:deobf"
+	deobfCompile "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:deobf"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.14.519"
+}
+
+minecraft {
+    version = "${mc_version}-${forge_version}"
+    runDir = "run"
+
+	replace "@VERSION@", project.version
+    replaceIn "GeniusTech.java"
+
+	clientRunArgs += "--username=${username}"
+
+    if (project.hasProperty('mappings_version'))
+        mappings = project.mappings_version
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
+}
+
+//jar {
+//    classifier = ''
+//    manifest.mainAttributes(
+//        "Built-By": System.getProperty('user.name'),
+//        "Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
+//        "Implementation-Title": project.name,
+//        "Implementation-Version": project.version,
+//        "Git-Hash": gitHash,
+//        "Built-On": "${mc_version}-${forge_version}"
+//    )
+//}
+
+tasks.withType(JavaCompile) { task ->
+    task.options.encoding = 'UTF-8'
+}
+
+//publishing {
+//    tasks.publish.dependsOn 'build'
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifact jar
+//            artifact sourceJar
+//        }
+//    }
+//    repositories {
+//        if (project.hasProperty('maven_repo')) {
+//            maven { url maven_repo }
+//        } else {
+//            mavenLocal()
+//        }
+//    }
+//}
+
+

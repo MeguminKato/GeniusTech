@@ -1,0 +1,24 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "builtin/generated",
+		"textures": {
+			"layer0": "thermalexpansion:items/augment/placeholder"
+		},
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"type": {
+			"tm_speed": {
+				"textures": {
+					"layer0": "geniustech:items/augment/tm_speed"
+				}
+			},
+			"tm_turbine": {
+				"textures": {
+					"layer0": "geniustech:items/augment/tm_turbine"
+				}
+			}
+		}
+	}
+}
